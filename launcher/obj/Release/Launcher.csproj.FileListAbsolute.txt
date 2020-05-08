@@ -1,0 +1,12 @@
+C:\Users\youj33n\Desktop\Launcher\Launcher\obj\Release\Launcher.csprojAssemblyReference.cache
+C:\Users\youj33n\Desktop\Launcher\Launcher\obj\Release\Launcher.Main.resources
+C:\Users\youj33n\Desktop\Launcher\Launcher\obj\Release\Launcher.Properties.Resources.resources
+C:\Users\youj33n\Desktop\Launcher\Launcher\obj\Release\Launcher.csproj.GenerateResource.cache
+C:\Users\youj33n\Desktop\Launcher\Launcher\obj\Release\Launcher.csproj.CoreCompileInputs.cache
+C:\Users\youj33n\Desktop\Launcher\Launcher\bin\Release\Launcher.exe.config
+C:\Users\youj33n\Desktop\Launcher\Launcher\bin\Release\Launcher.exe
+C:\Users\youj33n\Desktop\Launcher\Launcher\bin\Release\Launcher.pdb
+C:\Users\youj33n\Desktop\Launcher\Launcher\bin\Release\Newtonsoft.Json.dll
+C:\Users\youj33n\Desktop\Launcher\Launcher\obj\Release\Launcher.csproj.CopyComplete
+C:\Users\youj33n\Desktop\Launcher\Launcher\obj\Release\Launcher.exe
+C:\Users\youj33n\Desktop\Launcher\Launcher\obj\Release\Launcher.pdb
