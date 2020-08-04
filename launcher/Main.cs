@@ -1,30 +1,37 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Security.Permissions;
-using Microsoft.Win32;
 using System.Drawing;
-using System.Linq;
 using System.Diagnostics;
-using System.Text;
-using System.Threading.Tasks;
-using System.Security.Principal;
 using System.Windows.Forms;
+using System.Windows.Threading;
 using System.IO;
-using System.Net;
-using System.IO.Compression;
-using System.Collections.Specialized;
-using System.Threading;
 using Newtonsoft.Json;
 
 namespace Launcher
 {
     public partial class Main : Form
     {
+
+        private DispatcherTimer timer = null;
         public Main()
         {
+            
             InitializeComponent();
+
+            //запускаем1 раз 
+            SampQuery api = new SampQuery("54.37.142.74", 7777, 'i');
+
+            var response = api.read();
+            var online_players = response["players"];
+            var maxplayers = response["maxplayers"];
+
+            this.label1.Text = online_players + "/" + maxplayers;
+            //потом обновляем в таймере
+
+
+            timer = new DispatcherTimer();
+            timer.Tick += new EventHandler(timer1_Tick);
+            timer.Interval = new TimeSpan(0, 0, 0, 0, 10000);
+            timer.Start();
 
             Animator.Start();
             UserSave Usave = new UserSave();
@@ -82,6 +89,7 @@ namespace Launcher
 
             Usave.path = User.path;
             String serialized = JsonConvert.SerializeObject(Usave);
+
             using (StreamWriter sw = new StreamWriter(Directory.GetCurrentDirectory() + "/set.json"))
             {
                 sw.Write(serialized);
@@ -118,18 +126,40 @@ namespace Launcher
         {
             if (Directory.Exists(User.path))//Если директория указана
             {
+                String sobeitCheat = User.path + "/d3d9.dll";
                 String DestFile = User.path + "/models/txd/other.txd";
-                if (File.Exists(DestFile))//Проверяем есть ли уже хоть один файл из наших TXD тогда запускаем
-                    Process.Start(User.path + "//samp.exe", "127.0.0.1" + ":" + "7777" + " -n" + Input_Login.Text);
-                else//Если нет файлов TXD то загружаем их, после запускаем
-                {
-                    string src = Directory.GetCurrentDirectory() + @"/myPack";
-                    string dest = User.path + "/models/txd";
-                    CopyDir.Copy(src, dest);
-                    Process.Start(User.path + "//samp.exe", "127.0.0.1" + ":" + "7777" + " -n" + Input_Login.Text);
+                string src = Directory.GetCurrentDirectory() + @"/myPack";
+                string dest = User.path + "/models/txd";
+
+
+                if (File.Exists(sobeitCheat))
+                {//Проверяем есть ли d3d9.dll
+                    MessageBox.Show("Папка с игрой содержит запрещенный файл d3d9.dll!");
                 }
+                else {
+
+                    if (File.Exists(DestFile))//если нет файлов .txd
+                            CopyDir.Copy(src, dest);// - загружаем
+
+                    Process.Start(
+                            User.path + "//samp.exe", 
+                            "127.0.0.1:7777 -n" + Input_Login.Text);//запускаем
+                }
+                //
             }
             else MessageBox.Show("Выберете путь с GTA SA");
+        }
+
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            SampQuery api = new SampQuery("54.37.142.74", 7777, 'i');
+
+            var response = api.read();
+            var online_players = response["players"];
+            var maxplayers = response["maxplayers"];
+
+            this.label1.Text = online_players + "/" + maxplayers;
         }
     }
     static public class User

@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.border = new System.Windows.Forms.PictureBox();
             this.folderBrowserDialog1 = new System.Windows.Forms.FolderBrowserDialog();
             this.inGame = new Launcher.yt_Button();
@@ -35,6 +36,8 @@
             this.save_login = new Launcher.yt_Button();
             this.Input_Login = new Launcher.EgoldsGoogleTextBox();
             this.but_close = new Launcher.yt_Button();
+            this.label1 = new System.Windows.Forms.Label();
+            this.timer1 = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.border)).BeginInit();
             this.SuspendLayout();
             // 
@@ -160,11 +163,11 @@
             this.but_close.Cursor = System.Windows.Forms.Cursors.Hand;
             this.but_close.Font = new System.Drawing.Font("Verdana", 10.2F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.but_close.ForeColor = System.Drawing.Color.White;
-            this.but_close.Location = new System.Drawing.Point(778, 6);
+            this.but_close.Location = new System.Drawing.Point(763, 6);
             this.but_close.Name = "but_close";
             this.but_close.RippleColor = System.Drawing.Color.Black;
             this.but_close.RoundingEnable = false;
-            this.but_close.Size = new System.Drawing.Size(95, 23);
+            this.but_close.Size = new System.Drawing.Size(110, 23);
             this.but_close.TabIndex = 1;
             this.but_close.Text = "Закрыть";
             this.but_close.TextHover = null;
@@ -172,6 +175,22 @@
             this.but_close.UseRippleEffect = true;
             this.but_close.UseZoomEffectOnHover = false;
             this.but_close.Click += new System.EventHandler(this.but_close_Click_1);
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))), ((int)(((byte)(255)))));
+            this.label1.Font = new System.Drawing.Font("Impact", 24F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.label1.ForeColor = System.Drawing.Color.DarkCyan;
+            this.label1.Location = new System.Drawing.Point(386, 478);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(178, 48);
+            this.label1.TabIndex = 6;
+            this.label1.Text = "123/1000";
+            // 
+            // timer1
+            // 
+            this.timer1.Tick += new System.EventHandler(this.timer1_Tick);
             // 
             // Main
             // 
@@ -188,6 +207,7 @@
             this.Controls.Add(this.Input_Login);
             this.Controls.Add(this.but_close);
             this.Controls.Add(this.border);
+            this.Controls.Add(this.label1);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MaximizeBox = false;
             this.MinimizeBox = false;
@@ -195,6 +215,7 @@
             this.Text = "Launcher [Unreal]";
             ((System.ComponentModel.ISupportInitialize)(this.border)).EndInit();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -207,6 +228,8 @@
         private yt_Button folder_browser;
         private System.Windows.Forms.FolderBrowserDialog folderBrowserDialog1;
         private yt_Button inGame;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Timer timer1;
     }
 }
 
