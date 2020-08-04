@@ -143,8 +143,8 @@ namespace Launcher
                             CopyDir.Copy(src, dest);// - загружаем
 
                     Process.Start(
-                            User.path + "//samp.exe", 
-                            "127.0.0.1:7777 -n" + Input_Login.Text);//запускаем
+                            User.path + "//samp.exe",
+                            User.ip + " - n" + Input_Login.Text);//запускаем
                 }
                 //
             }
