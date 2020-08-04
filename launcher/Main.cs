@@ -18,7 +18,8 @@ namespace Launcher
             InitializeComponent();
 
             //запускаем1 раз 
-            SampQuery api = new SampQuery("54.37.142.74", 7777, 'i');
+
+            SampQuery api = new SampQuery(User.ip, 7777, 'i');
 
             var response = api.read();
             var online_players = response["players"];
@@ -153,7 +154,7 @@ namespace Launcher
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            SampQuery api = new SampQuery("54.37.142.74", 7777, 'i');
+            SampQuery api = new SampQuery(User.ip, 7777, 'i');
 
             var response = api.read();
             var online_players = response["players"];
@@ -166,6 +167,7 @@ namespace Launcher
     {
         public static string nickname = "Nickname";
         public static string path = " ";
+        public static string ip = "54.37.142.74";
     }
     public class UserSave
     {
